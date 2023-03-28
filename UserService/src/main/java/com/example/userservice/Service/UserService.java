@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserService {
 
-   //  @Autowired
+   @Autowired
     private UserRepository userRepository ;
 
     public List<User> getAllUsers()
@@ -42,7 +42,7 @@ public class UserService {
 
     public void deleteUser(String id)
     {
-        User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
+        User user = userRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
         userRepository.delete(user);
     }
 
